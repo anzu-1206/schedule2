@@ -1,0 +1,66 @@
+<%= stylesheet_link_tag "index", "data-turbo-track": "reload" %>
+
+<div class="all-index">
+<div class="index-top">
+    <span class="title">
+        予定一覧
+    </span>
+    <a href="/top/new">
+        <button class="new-cre">
+            <img class="plus" src="https://sato-icons.com/wp/wp-content/uploads/2021/05/%E3%83%97%E3%83%A9%E3%82%B9%E3%81%AE%E3%82%A2%E3%82%A4%E3%82%B3%E3%83%B32.svg" width="35" height="35">
+            新規作成
+        </button>
+    </a>
+</div>
+
+<% if flash[:notice] %>
+    <p class="notice"><%= flash[:notice] %></p>
+<% end %>
+
+<table class="index-list">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>タイトル</th>
+            <th>開始日</th>
+            <th>終了日</th>
+            <th>終日</th>
+            <th>更新日時</th>
+            <th></th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <% @newdate.each do |newdate| %>
+        <tr>
+            <td><%= newdate.id %></td>
+            <td><%= newdate.title %></td>
+            <td><%= newdate.startday.strftime('%Y-%m-%d') %></td>
+            <td><%= newdate.endday.strftime('%Y-%m-%d') %></td>
+            <td><% if newdate.allday == true %>〇<% end %></td>
+            <td><%= newdate.updated_at.to_fs(:datetime_jp) %></td>
+            <td><%= link_to "詳細", top_show_path(newdate.id) %></td>
+            <td><%= link_to "編集", top_edit_path(newdate.id) %></td>
+            <td><%= link_to "削除", top_path(newdate.id), data: { turbo_method: :delete, turbo_confirm: "本当に削除しますか？",} %></td>
+        </tr>
+        <% end %>
+    </tbody>
+</table>
+
+<div class="sum">
+    <div class="sum-title">
+        <span class="sum-text">
+            予定合計
+        </span>
+        <span class="sum-num">
+            <%= @newdate.count %>
+        </span>
+        <span class="sum-text">
+            件
+        </span>
+    </div>
+    <span class="today"><%= Time.zone.today.strftime('本日の日付 %Y/%m/%d') %></span>
+</div>
+</div>

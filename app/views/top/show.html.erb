@@ -1,0 +1,45 @@
+<%= stylesheet_link_tag "show", "data-turbo-track": "reload" %>
+
+<div class="show">
+<section class="section">
+
+<a class="back-index" href="/top/index">
+    <div class="index">
+        <img class="svg" src="https://sato-icons.com/wp/wp-content/uploads/2020/10/%E5%89%8D%E3%81%AB%E6%88%BB%E3%82%8B%E3%82%A2%E3%82%A4%E3%82%B3%E3%83%B33.svg" width="30" height="30">
+        <%= link_to "一覧に戻る", top_index_path, :class =>"index-title" %>
+    </div>
+</a>
+
+<div class="title">
+    <p class="schedule"><%= @newdate.title%></p>
+    <a class="to-edit">
+        <button class="btn">
+            <img class="svg" src ="https://sato-icons.com/wp/wp-content/uploads/2021/08/%E9%89%9B%E7%AD%86%E3%81%AE%E3%82%A2%E3%82%A4%E3%82%B3%E3%83%B3.svg" width="30" height="30">
+            <%= link_to "編集", top_edit_path, :class =>"btn-title" %>
+        </button>
+    </a>
+</div>
+
+<div class="show-data">
+    <table class="show-table">
+        <tr>
+            <th>開始日</th>
+            <td><%= @newdate.startday %></td>
+        </tr>
+        <tr>
+            <th>終了日</th>
+            <td><%= @newdate.endday %></td>
+        </tr>
+        <tr>
+            <th>終日</th>
+            <td><% if @newdate.allday == true %>〇<% end %></td>
+        </tr>
+        <tr>
+            <th>スケジュールメモ</th>
+            <td><%= @newdate.memo %></td>
+        </tr>
+    </table>
+</div>
+
+</section>
+</div>
