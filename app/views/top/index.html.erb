@@ -37,8 +37,8 @@
         <tr>
             <td><%= newdate.id %></td>
             <td><%= newdate.title %></td>
-            <td><%= newdate.startday.strftime('%Y-%m-%d') %></td>
-            <td><%= newdate.endday.strftime('%Y-%m-%d') %></td>
+            <td><%= newdate.startday.strftime('%Y/%m/%d') %></td>
+            <td><%= newdate.endday.strftime('%Y/%m/%d') %></td>
             <td><% if newdate.allday == true %>〇<% end %></td>
             <td><%= newdate.updated_at.to_fs(:datetime_jp) %></td>
             <td><%= link_to "詳細", top_show_path(newdate.id) %></td>

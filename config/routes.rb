@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   get "top/index"
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  root :to => "top#index"
   get "top/index", to: "top#index"
   get "top/new", to: "top#new"
   get "top/show/:id", to: "top#show", as: :top_show
