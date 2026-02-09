@@ -53,3 +53,20 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
+gem "sass-rails", "~>5.0"
+gem "bootstrap-sass", "~>3.3.6"
+gem "jquery-rails"
+gem "jquery-ui-rails"
+
+gem "minitest", "< 6"
+
+gem "pry-rails"
+
+gem "rails-i18n"
+
+gem "data-confirm-modal"
+
+gem "importmap-rails", "~> 2.2"
+
+gem 'turbo-rails'
+gem 'stimulus-rails'

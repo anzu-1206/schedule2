@@ -1,0 +1,77 @@
+<%= stylesheet_link_tag "edit", "data-turbo-track": "reload" %>
+
+<div class="all-edit">
+
+<h2 class="title">
+    予定を編集してください
+</h2>
+
+<% if @newdate.errors.any? %>
+    <div id="error_explanation">
+        <h2><%= @newdate.errors.count %>件のエラーが発生しました:</h2>
+        <ul>
+            <% @newdate.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+            <% end %>
+        </ul>
+    </div>
+    <% end %>
+
+<div class="edit-form">
+<%= form_with model: @newdate, local: true do |f| %>
+
+    <div class="table">
+        <div class="edit-tr">
+            <ul class="must">
+                <li class="kome"><label><%= f.label :title ,"タイトル", :class =>"form-title" %></label></li>
+                <li class="kome">*</li>
+            </ul>
+            <%= f.text_field :title, :class =>"form-text" %>
+        </div>
+
+        <ul class="ul-day">
+            <li class="li-day">
+                <div class="edit-tr">
+                    <ul class="must">
+                        <li class="kome"><label><%= f.label :startday ,"開始日", :class =>"form-title" %></label></li>
+                        <li class="kome">*</li>
+                    </ul>
+                    <%= f.date_field :startday, :class =>"form-text" %>
+                </div>
+            </li>
+
+            <li class="li-day">
+                <div class="edit-tr">
+                    <ul class="must">
+                        <li class="kome"><label><%= f.label :endday ,"終了日", :class =>"form-title" %></label></li>
+                        <li class="kome">*</li>
+                    </ul>
+                    <%= f.date_field :endday, :class =>"form-text" %>
+                </div>
+            </li>
+        </ul>
+
+        <div class="edit-check">
+            <%=f.check_box :allday, {}, "〇", "" %>
+            <span>終日の場合はチェックを入れます</span>
+        </div>
+
+        <div class="edit-tr">
+            <label><%= f.label :memo ,"スケジュールメモ", :class =>"form-title" %></label>
+            <%= f.text_area :memo, :class =>"form-text" %>
+        </div>
+    </div>
+
+
+    <div class="hozon">
+        <ul class="ul">
+            <li><%= link_to "キャンセル",  top_index_path, :class =>"cansel" %></li>
+            <li><%= f.submit "保存",  :class => "submit" %></li>
+        </ul>
+    </div>
+    <% end %>
+    </div>
+
+    </div>
+
+<script>$('.datepicker').datepicker();</script>
